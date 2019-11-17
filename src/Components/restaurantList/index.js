@@ -1,30 +1,29 @@
 import React, { Component } from "react";
 import Restaurant from "../Restaurant";
+import accordion from "../../decorator/accordion";
 
 class RestaurantList extends Component {
-  state = {
-    openRestaurentMenuId: null
-  };
   render() {
-    const { restaurants } = this.props;
-    const { openRestaurentMenuId } = this.state;
+    const {
+      restaurants,
+
+      // props from accordion decorator
+      openItemId,
+      toggleOpenItem
+    } = this.props;
     return (
       <div>
-        {restaurants.map(restaurants => (
+        {restaurants.map(restaurant => (
           <Restaurant
-            key={restaurants.id}
-            {...restaurants}
-            isMenuOpen={openRestaurentMenuId === restaurants.id}
-            toogleOpenMenu={this.toogleOpenRestaurantMenu}
+            key={restaurant.id}
+            {...restaurant}
+            isMenuOpen={openItemId === restaurant.id}
+            toggleOpenMenu={toggleOpenItem}
           />
         ))}
       </div>
     );
   }
-  toogleOpenRestaurantMenu = id => {
-    this.setState({
-      openRestaurentMenuId: id
-    });
-  };
 }
-export default RestaurantList;
+
+export default accordion(RestaurantList);

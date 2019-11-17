@@ -2,25 +2,24 @@ import React, { PureComponent } from "react";
 import RestaurantMenu from "../RestaurantMenu";
 
 class Restaurant extends PureComponent {
-  state = {
-    isOpen: false
-  };
   render() {
     const { image, name, menu, isMenuOpen } = this.props;
-    console.log("Restaurant render");
+
     return (
       <div>
-        <img src={image} width={64} height={64} />
+        <img src={image} width={64} height={64} alt={name} />
         <h3>{name}</h3>
-        <button onClick={() => this.handleToogleOpenClick()}>
-          {isMenuOpen ? "Close Menu" : "Open Menu"}
+        <button onClick={this.handleToggleOpenClick}>
+          {isMenuOpen ? "Close menu" : "Open menu"}
         </button>
         {isMenuOpen ? <RestaurantMenu menu={menu} /> : null}
       </div>
     );
   }
-  handleToogleOpenClick = () => {
-    this.props.toogleOpenMenu(this.props.id);
+
+  handleToggleOpenClick = () => {
+    this.props.toggleOpenMenu(this.props.id);
   };
 }
+
 export default Restaurant;
