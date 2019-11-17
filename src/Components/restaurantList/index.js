@@ -15,7 +15,7 @@ class RestaurantList extends Component {
             key={restaurants.id}
             {...restaurants}
             isMenuOpen={openRestaurentMenuId === restaurants.id}
-            toogleOpenMenu={() => this.toogleOpenRestaurantMenu(restaurants.id)}
+            toogleOpenMenu={this.toogleOpenRestaurantMenu}
           />
         ))}
       </div>

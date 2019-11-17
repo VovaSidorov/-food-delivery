@@ -1,13 +1,13 @@
-import React, { Component } from "react";
+import React, { PureComponent } from "react";
 import RestaurantMenu from "../RestaurantMenu";
 
-class Restaurant extends Component {
+class Restaurant extends PureComponent {
   state = {
     isOpen: false
   };
   render() {
     const { image, name, menu, isMenuOpen } = this.props;
-
+    console.log("Restaurant render");
     return (
       <div>
         <img src={image} width={64} height={64} />
@@ -20,7 +20,7 @@ class Restaurant extends Component {
     );
   }
   handleToogleOpenClick = () => {
-    this.props.toogleOpenMenu();
+    this.props.toogleOpenMenu(this.props.id);
   };
 }
 export default Restaurant;
